@@ -78,26 +78,26 @@ public class GameManager : MonoSingleton<GameManager>
     public void ShowJieShaoWnd(GameObject go)
     {
         MainData main = gameModel.excel.GetMainDataName(go.name);
-        Sprite sp = Resources.Load<Sprite>(main.SpritePath);
-        if (string.IsNullOrEmpty(main.TopTxt) || string.IsNullOrEmpty(main.Txt) || sp == null)
+        if (!main.Name.Equals("进门展台") && !main.Name.Equals("针阔混叶林区")&& !main.Name.Equals("稀树草原区")&& !main.Name.Equals("湿地区")&& !main.Name.Equals("牡丹江流域区1")&& !main.Name.Equals("珍惜濒危区")&&
+            !main.Name.Equals("牡丹江流域区2")&& !main.Name.Equals("生命支撑区")&& !main.Name.Equals("农业区")&& !main.Name.Equals("啮齿动物区") && !main.Name.Equals("动物多样性区") && !main.Name.Equals("北药区")&&
+             !main.Name.Equals("植物标本区") && !main.Name.Equals("昆虫世界区") && !main.Name.Equals("海底世界区") && !main.Name.Equals("食用菌区"))
         {
-            Debug.Log("上面三个判断有空，无法赋值，检查表中名字为：" + go.name);
+            Sprite sp = Resources.Load<Sprite>(main.SpritePath);
+
+            if (string.IsNullOrEmpty(main.TopTxt) || string.IsNullOrEmpty(main.Txt) || sp == null)
+            {
+                Debug.Log("上面三个判断有空，无法赋值，检查表中名字为：" + go.name);
+            }
+            else
+            {
+                Game.Instance.uiManager.ShowUI<JieShaoWnd>(null, main.TopTxt, sp, main.Txt);
+            }
         }
         else
         {
-            if (main.Name.Equals("昆虫世界")|| main.Name.Equals("牡丹江流域植物资源")|| main.Name.Equals("农作物")|| main.Name.Equals("稀树草原动物")||
-                main.Name.Equals("湿地动物")|| main.Name.Equals("森岭动物")|| main.Name.Equals("珍稀动物")|| main.Name.Equals("牡丹江流域野生动物"))
-            {
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(main.SoundPath))
-            {
-                Game.Instance.sound.PlayBGM(main.SoundPath, false);
-                return;
-            }
-            Game.Instance.uiManager.ShowUI<JieShaoWnd>(null, main.TopTxt, sp, main.Txt);
+            Game.Instance.sound.PlayBGM(main.SoundPath, false);
         }
+        
     }
 
 

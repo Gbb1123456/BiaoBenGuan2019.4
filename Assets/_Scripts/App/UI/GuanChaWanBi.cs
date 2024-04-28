@@ -14,7 +14,7 @@ public class GuanChaWanBi : MonoBehaviour
         btn.onClick.AddListener(() =>
         {
             GameManager.Instance.playerRot.enabled = true;
-            //GameManager.Instance.playerMove.enabled = true;
+            GameManager.Instance.playerMove.enabled = true;
             GameManager.Instance.transform.FindFirst("Look_Canvas").SetActive(false);
             for (int i = 0; i < GameManager.Instance.allLookModel.Count; i++)
             {
