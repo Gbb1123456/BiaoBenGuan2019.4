@@ -1,15 +1,4 @@
-﻿
-/*****************************************************
-* 版权声明：上海卓越睿新数码科技有限公司，保留所有版权
-* 文件名称：Fullscreen.cs
-* 文件版本：1.0
-* 创建时间：2022/08/19 03:30:48
-* 作者名称：NoName
-* 文件描述：
-
-*****************************************************/
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -43,6 +32,7 @@ namespace WisdomTree.NoName.Function
             image = GetComponent<Image>();
             btn = GetComponent<Button>();
 
+            btn.onClick.AddListener(Switch);
             //初始检测并改变图标，当全屏时重新加载场景可避免图标不准确的问题
             ChangeIcon(Screen.fullScreen);
         }
